@@ -3,11 +3,12 @@ from bs4 import BeautifulSoup
 import csv
 import pandas as pd
 
+browser=webdriver.Chrome()
 START_URL = (
     "https://en.wikipedia.org/wiki/List_of_brightest_stars_and_other_record_stars"
 )
 browser.get(START_URL)
-soup = BeautifulSoup(browser.text, "html.parser")
+soup=BeautifulSoup(browser.page_source,"html.parser")
 temp_list = []
 for tr in soup.find("table").find_all("tr"):
     td = tr.find_all("td")
